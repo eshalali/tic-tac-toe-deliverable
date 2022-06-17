@@ -31,6 +31,10 @@ h2{
     top: 100px;
 }
 
+.square:hover {
+    background-color: rgb(156, 156, 223);
+}
+
 #square1 {
     position: absolute;
     left: 0px;
@@ -103,5 +107,5 @@ p {
 button {
     position: absolute;
     left: 760px;
-    bottom: 75px;
+    bottom: 50px;
 }

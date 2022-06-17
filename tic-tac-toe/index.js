@@ -58,6 +58,8 @@ const checkForWin = () => {
             move = 1
             alert('draw')
             clearBoard()
+        } else {
+            return false
         }
     }
 }
@@ -69,24 +71,30 @@ const addMark = (event) => {
         player = 2
         move++
         event.target.appendChild(squareMark)
-        checkForWin()
-        alert('Player ' + (player - 1) + "'s turn")
-        event.target.removeEventListener('click', addMark)
     } else {
         squareMark.innerHTML = 'X'
         player = 1
         move++
         event.target.appendChild(squareMark)
-        checkForWin()
-        alert('Player ' + (player + 1) + "'s turn")
-        event.target.removeEventListener('click', addMark)
     }
-    checkForWin()
+    if (checkForWin()) {
+        return
+    } else {
+        if (player === 1) {
+            alert('Player ' + (player + 1) + "'s turn")
+            event.target.removeEventListener('click', addMark)
+        } else {
+            alert('Player ' + (player - 1) + "'s turn")
+            event.target.removeEventListener('click', addMark)
+        }
+    }
+    // checkForWin()
 }
 
 
 for (let i = 0; i < squares.length; i++) {
     squares[i].addEventListener('click', addMark)
+    checkForWin()
 }
 
 resetbut.addEventListener('click', clearBoard)
